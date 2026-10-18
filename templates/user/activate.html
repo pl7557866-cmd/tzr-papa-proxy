@@ -1,1 +1,59 @@
 
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070b16">
+  <title>Activate License | TZR PAPA PROXY</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tzr.css') }}">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="/user/">
+        <strong>TZR PAPA <span>PROXY</span></strong>
+      </a>
+      <nav class="nav">
+        <a href="/user/">Home</a>
+        <a class="active" href="/user/activate">Activate</a>
+        <a href="/user/dashboard">Dashboard</a>
+      </nav>
+    </header>
+
+    <main class="main">
+      <section class="hero">
+        <span class="pill">LICENSE ACTIVATION</span>
+        <h1>Activate your <span>license</span></h1>
+        <p class="sub">Enter your license key to access your workspace.</p>
+
+        {% if error %}
+          <p role="alert">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('user.activate') }}" class="card">
+          <label for="license_key">License key</label>
+          <input
+            id="license_key"
+            name="license_key"
+            type="text"
+            placeholder="Enter your license key"
+            required
+          >
+
+          <input
+            type="hidden"
+            name="device_id"
+            value="web-session"
+          >
+
+          <button class="btn" type="submit">Activate license →</button>
+        </form>
+      </section>
+
+      <footer class="footer">TZR PAPA PROXY • OB55</footer>
+    </main>
+  </div>
+</body>
+</html>
